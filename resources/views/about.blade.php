@@ -66,7 +66,84 @@
         </div>
     </section>
 
-    <section id="about" class="about"></section>
+    <section id="about" class="about">
+        @php
+            $tabs = [
+                [
+                    'id' => 'tab-1',
+                    'title' => 'Chefs',
+                    'employers' => [
+                        [
+                            'name' => 'Van French',
+                            'position' => 'Corporate Executive Pastry Chef',
+                            'image' => '/images/employees/1.png',
+                            'story-cards' => [
+                                '1', '2', '3', '4'
+                            ]
+                        ]
+                    ]
+                ],
+               [
+                    'id' => 'tab-2',
+                    'title' => 'Corporate',
+                    'employers' => [
+                        [
+                            'name' => 'Jane Doe',
+                            'position' => 'Manager',
+                            'image' => '/images/employees/2.png',
+                             'story-cards' => [
+                                '1', '2', '3', '4'
+                            ]
+                        ]
+                    ]
+                ],
+               [
+                    'id' => 'tab-3',
+                    'title' => 'Store management',
+                    'employers' => [
+                        [
+                            'name' => 'Jane Doe',
+                            'position' => 'Manager',
+                            'image' => '/images/employees/3.png',
+                             'story-cards' => [
+                                '1', '2', '3', '4'
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+        @endphp
+
+        <div class="about__tabs">
+            @foreach ($tabs as $tab)
+                <input class="about__tabs__input" name="tabs" type="radio" id="{{ $tab['id'] }}"
+                       @if ($loop->first) checked @endif />
+
+                <label class="about__tabs__label font-lusitana" for="{{ $tab['id'] }}">{{ $tab['title'] }}</label>
+
+                <div class="about__tabs__panel container">
+                    <h1>{{ $tab['title'] }}</h1>
+
+                    <div class="about__cards">
+                        @foreach ($tab['employers'] as $employer)
+                            <div class="about__card">
+                                <img class="about__card__image" src="{{ $employer['image'] }}" alt="" />
+
+                                <p class="about__card__name font-garamond">{{ $employer['name'] }}</p>
+                                <p class="about__card__position font-garamond">{{ $employer['position'] }}</p>
+
+                                <div class="about__card__story">
+                                    @foreach ($employer['story-cards'] as $storyCard)
+                                        <p class="about__card__story__card font-garamond">{{ $storyCard }}</p>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
 </main>
 </body>
 </html>
