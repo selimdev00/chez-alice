@@ -55,7 +55,7 @@
                 aliquip ex ea commodo consequat.
             </p>
 
-            <a href="#products">
+            <a href="#about">
                 <button class="hero__button">
                     <span class="hero__button__text">Are you ready?</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -67,6 +67,8 @@
             </a>
         </div>
     </section>
+
+    <section id="about" class="about"></section>
 </main>
 </body>
 </html>
