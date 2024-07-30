@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<x-layout.meta />
+<head>
+    <x-layout.meta />
+    <title>Baked Goods | Bonjour</title>
+</head>
 
 <body>
 <x-layout.header />
