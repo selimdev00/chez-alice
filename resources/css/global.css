@@ -189,6 +189,11 @@ body {
     text-align: left;
 }
 
+.header__nav__item:hover, .header__nav__item.active {
+    color: var(--primary);
+}
+
+
 .header__cart {
     position: relative;
     z-index: 1;

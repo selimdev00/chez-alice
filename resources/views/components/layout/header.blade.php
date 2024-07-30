@@ -7,18 +7,24 @@
 
             <nav>
                 <ul class="header__nav">
-                    <li class="header__nav__item"><a href="{{ route('home') }}">Store</a></li>
-                    <li class="header__nav__item"><a href="{{ route('about') }}">About</a></li>
-                    <li class="header__nav__item"><a href="#">Shipping</a></li>
-                    <li class="header__nav__item"><a href="#">Recipes</a></li>
-                    <li class="header__nav__item"><a href="#">Blog</a></li>
+                    @php
+                        $navItems = [
+                            ['name' => 'Home', 'route' => 'home', 'path' => '/'],
+                            ['name' => 'About', 'route' => 'about', 'path' => 'about' ],
+                        ];
+                    @endphp
+
+                    @foreach ($navItems as $item)
+                        <li class="header__nav__item {{ request()->is($item['path']) ? 'active' : '' }}"><a
+                                href="{{ route($item['route']) }}">{{ $item['name'] }} </a></li>
+                    @endforeach
                 </ul>
             </nav>
         </div>
 
         <div class="header__section">
             <button class="header__cart">
-        <span class="header__cart__inner">
+                <span class="header__cart__inner">
           <svg
               width="1em"
               height="1em"
