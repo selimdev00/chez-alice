@@ -84,7 +84,7 @@
                                 'position' => 'Corporate Executive Pastry Chef',
                                 'image' => '/images/employees/1.png',
                                 'story-cards' => [
-                                    '1', '2', '3', '4'
+                                    'Van E. French, Jr. is the Corporate Executive Pastry Chef of Genesis Hospitality.  He brings over thirty years of professional experience in the culinary and pastry arts to this new role.  His wide-ranging experience includes award winning pastry creations, chef management, and restaurant & bakery management.', "Van E. French, Jr. founded Van Earl's Cakes in Bucks County, PA from 2009 to 2019.  Specializing in high-end wedding cakes and gourmet desserts, Chef Van provided service to five-star venues in Philadelphia including The Ritz-Carlton Hotel, Four Seasons Hotel, and STARR Catering Group (now Constellation Culinary).  Prior to joining Genesis Hospitality, Chef Van served as Executive Pastry Chef at the esteemed Hotel Hershey 2019 to 2022 and directed pastry and dessert operations for the hotel's three restaurants and banquet facilities.", 'Chef Van has been featured in Philadelphia Wedding Magazine, The Philadelphia Modern Luxury Magazine and Philadelphia Style Magazine for his artistic and creative cake designs.  He is a three-time Food Network competitor; Food Network Season 2 "Cake Wars" in 2016, Food Network 2018 "Wedding Cake Championship" and Food Network 2018 "Holiday Gingerbread Showdown".'
                                 ]
                             ],
                             [
@@ -92,7 +92,7 @@
                                 'position' => 'Corporate Executive Pastry Chef',
                                 'image' => '/images/employees/2.png',
                                 'story-cards' => [
-                                    '1', '2', '3', '4'
+                                    "A former monk with a music and Spanish Literature degree from college, Kir decided to change gears and jump into the world of food. Raised on a farm in the countryside of Puerto Rico and with a genuine love and commitment to wholesome ingredients, this was a no brainer.", "A former monk with a music and Spanish Literature degree from college, Kir decided to change gears and jump into the world of food. Raised on a farm in the countryside of Puerto Rico and with a genuine love and commitment to wholesome ingredients, this was a no brainer.", "His love for food has taken him to compete in multiple pastry competitions and appearances on the Food Network. He is a 1998 graduate of the French Culinary Institute under the mentorship of Jacques Torres, Alain Sailhac, Jacques Pepin and Andre Soltner, and has taken additional classes across the United States and in Italy. Chef Kir has worked in renowned Manhattan institutions such as Daniel, Union Square Cafe, Le Cirque and Orso. He later taught at the International Culinary Center (formerly the French Culinary Institute) for 16 years."
                                 ]
                             ]
                         ]
@@ -106,7 +106,7 @@
                                 'position' => 'Director of Hospitality',
                                 'image' => '/images/employees/3.png',
                                  'story-cards' => [
-                                    '1', '2', '3', '4'
+                                    "Eben Copple loves food, drawing culinary inspiration from the local Kansas farmer's markets he visited with his parents in his youth. The Kansas native honed his chef credentials at local restaurants like Lidia's Kansas City, owned by celebrity chef, television host, author, and restauranteur Lidia Bastianich, and Eleven, an innovative eatery in Pittsburgh, PA's Strip District.", "Chef Eben continued his career at several of New York City's top restaurants, including WD-50, a Lower East Side mecca of modernist cooking; Barbuto, a beloved West Village Italian spot; and Jovia, a New American restaurant tucked in an Upper East Side townhouse. In 2007, Eben brought his passion for fresh, local flavor to the Yardley Inn in Yardley, PA, as Executive Chef. There, he started the organic riverside kitchen garden that provided a variety of vegetables and herbs for his seasonal menus.", "As Culinary Director of Genesis Hospitality, Eben works closely with the Executive Chefs in the group - at properties such as The Peacock Inn, Chez Alice Patisserie in Princeton and Lambertville, NJ; Proof Pizza in Princeton, NJ; Nassau Diner in Princeton, NJ; Lambertville Station Restaurant and Inn in Lambertville, NJ; Washington Crossing Inn in Washington Crossing, PA; and Yardley Inn in Yardley, Pa - to build upon their unique restaurant concepts and develop new, exciting ones."
                                 ]
                             ],
                            [
@@ -114,7 +114,7 @@
                                 'position' => 'Assistant Director of Hospitality',
                                 'image' => '/images/employees/4.png',
                                  'story-cards' => [
-                                    '1', '2', '3', '4'
+                                    "Wayne Susser, a veteran hotelier, has been in the hospitality business for over thirty years. He began his career as an hourly employee with Hilton. With vast experience in both front and back of the house, he worked his way up to Management positions including New York Hilton and Towers and Pittsburgh Hilton. As a General Manager, he ran Doubletree South Park, South Carolina; Doubletree Plymouth Meeting in Pennsylvania; and Doubletree Somerset in New Jersey. Wayne eventually transitioned into the role of Sr. Brand Manager and Sr. Hotel Director of Hotel Growth and Cultural Development for Doubletree's International properties in EMEA and APAC. He held the positon of Vice President of Brand operations for Wyndham Hotels and Resorts and most recently Vice President of Franchise Sales & Development at Radisson Hotel Group., overseeing the East Coast Region.", "Wayne received an Associates degree in Culinary Arts from the Culinary Institute of America in Hyde Park, NY, and a Bachelors of Arts degree in Business Administration from Upsala College in East Orange, NJ. His certification include Certified Hotel Administrator (CHA) and Certified Revenue Management Executive (CRME)."
                                 ]
                             ]
                         ]
@@ -128,7 +128,7 @@
                                 'position' => 'General Manager',
                                 'image' => '/images/employees/5.png',
                                  'story-cards' => [
-                                    '1', '2', '3', '4'
+                                    'Michelle Mohollen is no stranger to hospitality and food service, with over four decades of industry experience. She began her career with Disney Universityâ€™s Hospitality program and as General Manager of El Torito Mexican Cantino.  Michelle was a fixture at the Yardley Inn as General Manager for 35 years. In 2023, Michelle transitioned into a Corporate position in Genesis Hospitality, where she utilizes her seasoned leadership at other Genesis Hospitality concepts.', 'She is currently the General Manager of Chez Alice Patisserie in Princeton. Michelle is dedicated to excellence and passionate about providing an enjoyable customer experience. During her free time, Michelle enjoys pilates and spending time at the beach with her family, especially her three grandsons.'
                                 ]
                             ]
                         ]
@@ -156,9 +156,28 @@
                                         alt=""
                                     />
 
-                                    <div class="about__employee__info"><p
-                                            class="about__employee__name font-garamond">{{ $employer['name']  }}</p>
-                                        <p class="about__employee__position">{{ $employer['position']  }}</p>
+                                    <div class="about__employee__info__wrapper">
+                                        <div class="about__employee__info">
+                                            <p
+                                                class="about__employee__name font-garamond">{{ $employer['name']  }}</p>
+                                            <p class="about__employee__position">{{ $employer['position']  }}</p>
+                                        </div>
+
+                                        <div class="about__employee__story-cards">
+                                            @foreach($employer['story-cards'] as $storyCard)
+                                                <div class="about__employee__story-card">
+                                                    {{ $storyCard  }}
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                        <div class="about__employee__story-cards__pagination">
+                                            @foreach($employer['story-cards'] as $index => $storyCard)
+                                                <div class="about__employee__story-cards__pagination__bullet"
+                                                     data-index="{{ $index  }}">
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -230,7 +249,7 @@
                         node.classList.add("active");
 
                         this.initSlider();
-                    }, 50)
+                    }, 50);
                 };
 
                 const closeTab = () => {
@@ -269,7 +288,7 @@
                     this.handleSliderButtons();
 
                     const offset = this.slider.getBoundingClientRect().width;
-                    this.currentSlide = this.slider.querySelector(`[data-index="${this.sliderCurrentIndex}"]`);
+                    this.currentSlide = this.slider.querySelector(`.about__employee[data-index="${this.sliderCurrentIndex}"]`);
 
                     const handleCurrentSlide = () => {
                         this.slider.style.transform = `translateX(-${this.sliderCurrentIndex * offset}px)`;
@@ -277,6 +296,8 @@
                         setTimeout(() => {
                             this.slider.style.filter = "grayscale(0%)";
                             this.currentSlide.style.scale = "1";
+
+                            this.handleSlideStoryCards(this.currentSlide);
                         }, 300);
                     };
 
@@ -338,9 +359,49 @@
                     this.sliderButtons.next.style.opacity = 1;
                 }
             }
+
+            handleSlideStoryCards(slide) {
+                const bullets = slide.querySelectorAll(".about__employee__story-cards__pagination__bullet");
+                const storyCardsWrapper = slide.querySelector(".about__employee__story-cards");
+
+
+                const makeActive = (node, index) => {
+                    bullets.forEach(e => e.classList.remove("active"));
+                    node.classList.add("active");
+                    const offset = storyCardsWrapper.getBoundingClientRect().width;
+                    storyCardsWrapper.style.transform = `translateX(-${offset * index}px)`;
+                };
+
+                makeActive(bullets[0], 0);
+
+                bullets.forEach(node => {
+                    const index = node.dataset["index"];
+
+                    node.addEventListener("click", (e) => {
+                        makeActive(node, index);
+                    });
+                });
+            }
         }
 
-        new About();
+        function debounce(func, wait) {
+            let timeout;
+
+            return function(...args) {
+                const context = this;
+
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+
+        const init = debounce(() => new About(), 100)
+
+        init()
+
+        window.addEventListener('resize', () => {
+            init()
+        })
     </script>
 </main>
 </body>
