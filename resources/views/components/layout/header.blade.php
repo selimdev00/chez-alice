@@ -11,6 +11,7 @@
                         $navItems = [
                             ['name' => 'Home', 'route' => 'home', 'path' => '/'],
                             ['name' => 'About', 'route' => 'about', 'path' => 'about' ],
+                            ['name' => 'News', 'route' => 'news', 'path' => 'news'],
                         ];
                     @endphp
 
@@ -44,7 +45,7 @@
         </div>
     </div>
 
-    <button class="order-button">
-        <span class="order-button__inner font-lusitana">Order now</span>
-    </button>
+{{--    <button class="order-button">--}}
+{{--        <span class="order-button__inner font-lusitana">Order now</span>--}}
+{{--    </button>--}}
 </header>
