@@ -3,6 +3,7 @@
 <head>
     <x-layout.meta />
     <title>Baked Goods | Bonjour</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>

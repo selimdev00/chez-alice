@@ -3,13 +3,14 @@
 <head>
     <x-layout.meta />
     <title>About bakery | Bonjour</title>
+    @vite(['resources/css/app.css'])
 </head>
 <body>
 <x-layout.header />
 
 <main>
     <section class="hero">
-        <div class="hero__noise"></div>
+        <div class="hero__noise" style="background-image: url('/images/hero-overlay.png')"></div>
 
         <div class="hero__bg-images">
             <img class="hero__bg-image" src="./images/hero-image-1.png" alt="" />
@@ -67,83 +68,280 @@
     </section>
 
     <section id="about" class="about">
-        @php
-            $tabs = [
-                [
-                    'id' => 'tab-1',
-                    'title' => 'Chefs',
-                    'employers' => [
-                        [
-                            'name' => 'Van French',
-                            'position' => 'Corporate Executive Pastry Chef',
-                            'image' => '/images/employees/1.png',
-                            'story-cards' => [
-                                '1', '2', '3', '4'
-                            ]
-                        ]
-                    ]
-                ],
-               [
-                    'id' => 'tab-2',
-                    'title' => 'Corporate',
-                    'employers' => [
-                        [
-                            'name' => 'Jane Doe',
-                            'position' => 'Manager',
-                            'image' => '/images/employees/2.png',
-                             'story-cards' => [
-                                '1', '2', '3', '4'
-                            ]
-                        ]
-                    ]
-                ],
-               [
-                    'id' => 'tab-3',
-                    'title' => 'Store management',
-                    'employers' => [
-                        [
-                            'name' => 'Jane Doe',
-                            'position' => 'Manager',
-                            'image' => '/images/employees/3.png',
-                             'story-cards' => [
-                                '1', '2', '3', '4'
-                            ]
-                        ]
-                    ]
-                ]
-            ];
-        @endphp
+        <div class="about__overlay" style="background-image: url('/images/overlay.png')"></div>
 
-        <div class="about__tabs">
+        <div class="about__container">
+
+
+            @php
+                $tabs = [
+                    [
+                        'id' => 'tab-1',
+                        'title' => 'Chefs',
+                        'employers' => [
+                            [
+                                'name' => 'Van French',
+                                'position' => 'Corporate Executive Pastry Chef',
+                                'image' => '/images/employees/1.png',
+                                'story-cards' => [
+                                    '1', '2', '3', '4'
+                                ]
+                            ],
+                            [
+                                'name' => 'Van French 2',
+                                'position' => 'Corporate Executive Pastry Chef',
+                                'image' => '/images/employees/2.png',
+                                'story-cards' => [
+                                    '1', '2', '3', '4'
+                                ]
+                            ]
+                        ]
+                    ],
+                   [
+                        'id' => 'tab-2',
+                        'title' => 'Corporate',
+                        'employers' => [
+                            [
+                                'name' => 'Eben Copple',
+                                'position' => 'Director of Hospitality',
+                                'image' => '/images/employees/3.png',
+                                 'story-cards' => [
+                                    '1', '2', '3', '4'
+                                ]
+                            ],
+                           [
+                                'name' => 'Wayne Susser',
+                                'position' => 'Assistant Director of Hospitality',
+                                'image' => '/images/employees/4.png',
+                                 'story-cards' => [
+                                    '1', '2', '3', '4'
+                                ]
+                            ]
+                        ]
+                    ],
+                   [
+                        'id' => 'tab-3',
+                        'title' => 'Store management',
+                        'employers' => [
+                            [
+                                'name' => 'Michelle Mohollen',
+                                'position' => 'General Manager',
+                                'image' => '/images/employees/5.png',
+                                 'story-cards' => [
+                                    '1', '2', '3', '4'
+                                ]
+                            ]
+                        ]
+                    ]
+                ];
+            @endphp
+
+            <div class="about__tabs">
+                @foreach ($tabs as $tab)
+                    <div class="about__tab" data-id="{{ $tab['id']  }}">
+                        {{ $tab['title']  }}
+                    </div>
+                @endforeach
+            </div>
+
             @foreach ($tabs as $tab)
-                <input class="about__tabs__input" name="tabs" type="radio" id="{{ $tab['id'] }}"
-                       @if ($loop->first) checked @endif />
+                <div data-id="{{ $tab['id']  }}" class="about__tab__content">
+                    <div class="about__employees__wrapper">
+                        <div class="about__employees">
+                            @foreach ($tab['employers'] as $index => $employer)
+                                <div class="about__employee" data-index="{{ $index  }}">
+                                    <img
+                                        class="about__employee__image"
+                                        src="{{ $employer['image'] }}"
+                                        alt=""
+                                    />
 
-                <label class="about__tabs__label font-lusitana" for="{{ $tab['id'] }}">{{ $tab['title'] }}</label>
-
-                <div class="about__tabs__panel container">
-                    <h1>{{ $tab['title'] }}</h1>
-
-                    <div class="about__cards">
-                        @foreach ($tab['employers'] as $employer)
-                            <div class="about__card">
-                                <img class="about__card__image" src="{{ $employer['image'] }}" alt="" />
-
-                                <p class="about__card__name font-garamond">{{ $employer['name'] }}</p>
-                                <p class="about__card__position font-garamond">{{ $employer['position'] }}</p>
-
-                                <div class="about__card__story">
-                                    @foreach ($employer['story-cards'] as $storyCard)
-                                        <p class="about__card__story__card font-garamond">{{ $storyCard }}</p>
-                                    @endforeach
+                                    <div class="about__employee__info"><p
+                                            class="about__employee__name font-garamond">{{ $employer['name']  }}</p>
+                                        <p class="about__employee__position">{{ $employer['position']  }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             @endforeach
+
+
+            <div class="about__btns">
+                <button class="about__btn about__prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                         style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                        <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                    </svg>
+                </button>
+
+                <button class="about__btn about__next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                         style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                        <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </section>
+
+    <script>
+        class About {
+            constructor() {
+                this.tabs = document.querySelectorAll(".about__tab");
+                this.activeTab = '{{ $tabs[0]['id']  }}';
+
+                this.init();
+            }
+
+            init() {
+                this.initTabs();
+            }
+
+            initTabs() {
+                this.tabs.forEach(node => {
+                    if (node.dataset["id"] === this.activeTab) {
+                        this.selectTab(node);
+                    }
+
+                    node.addEventListener("click", (e) => {
+                        this.selectTab(node);
+                    });
+                });
+            }
+
+            selectTab(node) {
+                const id = node.dataset["id"];
+
+                const prevTabContent = document.querySelector(".about__tab__content.active");
+                const currentTabContent = document.querySelector(`.about__tab__content[data-id="${id}"]`);
+
+                const showTab = () => {
+                    this.activeTab = id;
+
+                    currentTabContent.style.scale = 0.5;
+                    currentTabContent.style.opacity = 0;
+                    currentTabContent.classList.add("active");
+
+                    setTimeout(() => {
+                        currentTabContent.style.scale = 1;
+                        currentTabContent.style.opacity = 1;
+                        node.classList.add("active");
+
+                        this.initSlider();
+                    }, 50)
+                };
+
+                const closeTab = () => {
+                    prevTabContent.style.scale = 0.5;
+                    prevTabContent.style.opacity = 0;
+
+                    setTimeout(() => {
+                        node.classList.remove("active");
+                        prevTabContent.classList.remove("active");
+                        this.tabs.forEach(e => e.classList.remove("active"));
+
+                        showTab();
+                    }, 500);
+
+                };
+
+                if (prevTabContent) {
+                    closeTab();
+                } else {
+                    showTab();
+                }
+            }
+
+            initSlider() {
+                this.slider = document.querySelector(".about__tab__content.active .about__employees");
+                this.slides = this.slider.querySelectorAll(".about__employee");
+                this.sliderButtons = {
+                    prev: document.querySelector(".about__prev"),
+                    next: document.querySelector(".about__next")
+                };
+
+                this.slideCount = this.slides.length;
+                this.sliderCurrentIndex = 0;
+
+                const updateSlidePosition = (prevIndex) => {
+                    this.handleSliderButtons();
+
+                    const offset = this.slider.getBoundingClientRect().width;
+                    this.currentSlide = this.slider.querySelector(`[data-index="${this.sliderCurrentIndex}"]`);
+
+                    const handleCurrentSlide = () => {
+                        this.slider.style.transform = `translateX(-${this.sliderCurrentIndex * offset}px)`;
+
+                        setTimeout(() => {
+                            this.slider.style.filter = "grayscale(0%)";
+                            this.currentSlide.style.scale = "1";
+                        }, 300);
+                    };
+
+                    if (prevIndex !== undefined) {
+                        this.slider.style.filter = "grayscale(100%)";
+
+                        this.prevSlide = this.slider.querySelector(`[data-index="${prevIndex}"]`);
+
+                        this.currentSlide.style.scale = "0.9";
+                        this.prevSlide.style.scale = "0.9";
+
+                        setTimeout(() => {
+                            handleCurrentSlide();
+                        }, 300);
+                    } else {
+                        handleCurrentSlide();
+                    }
+                };
+
+                updateSlidePosition();
+
+                this.sliderButtons.prev.addEventListener("click", () => {
+                    const prevIndex = this.sliderCurrentIndex;
+                    if (this.sliderCurrentIndex > 0) {
+                        this.sliderCurrentIndex--;
+                        updateSlidePosition(prevIndex);
+                    }
+                });
+
+
+                this.sliderButtons.next.addEventListener("click", () => {
+                    const prevIndex = this.sliderCurrentIndex;
+
+                    if (this.sliderCurrentIndex < this.slideCount - 1) {
+                        this.sliderCurrentIndex++;
+                        updateSlidePosition(prevIndex);
+                    }
+                });
+
+                this.handleSliderButtons();
+
+            }
+
+            handleSliderButtons() {
+                if (this.slideCount === 1) {
+                    this.sliderButtons.next.style.opacity = 0;
+                    this.sliderButtons.prev.style.opacity = 0;
+                }
+
+                if (this.sliderCurrentIndex === 0) {
+                    this.sliderButtons.prev.style.opacity = 0;
+                } else {
+                    this.sliderButtons.prev.style.opacity = 1;
+                }
+
+                if (this.sliderCurrentIndex === this.slideCount - 1) {
+                    this.sliderButtons.next.style.opacity = 0;
+                } else {
+                    this.sliderButtons.next.style.opacity = 1;
+                }
+            }
+        }
+
+        new About();
+    </script>
 </main>
 </body>
 </html>

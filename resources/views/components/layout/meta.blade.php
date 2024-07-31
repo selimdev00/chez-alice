@@ -5,4 +5,3 @@
 
 <meta name="description" content="Serving Baked Goods Every Day" />
 <meta name="keywords" content="baked goods, baked goods every day" />
-@vite(['resources/css/app.css', 'resources/js/app.js'])
